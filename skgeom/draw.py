@@ -252,6 +252,7 @@ def draw_polygon(
     plot_vertices=True,
     aspect_ratio=1,
     alpha=1,
+    **kwargs
 ):
     fig, ax = plt.gcf(), plt.gca()
     vertices = to_list_of_tuples(polygon.vertices) + [(0, 0)]
@@ -273,7 +274,7 @@ def draw_polygon(
             vertices.extend(hole_vertices)
 
     path = Path(vertices, codes)
-    plt.gca().add_patch(patches.PathPatch(path, facecolor=facecolor, lw=line_width, alpha=alpha))
+    plt.gca().add_patch(patches.PathPatch(path, facecolor=facecolor, lw=line_width, alpha=alpha, **kwargs))
 
     plt.gca().relim()
     plt.gca().autoscale_view()
